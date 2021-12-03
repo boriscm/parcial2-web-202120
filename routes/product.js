@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const {getProducts} = require('../controllers/product');
 
 /* GET products listing. Please establish connection with getProduct function from controllers/product.js  */
 router.get('/', function (req, res, next) {
+  var a = getProducts();
+  var serch = req.url.split("=")["1"];
+  var r = [];
+  b = a.filter(function(x) {if (x['name'].includes('Oil')) return x});
   res.send(
-    'To implement. Please establish connection with getProduct function from controllers/product.js'
+    b
   );
 });
 
