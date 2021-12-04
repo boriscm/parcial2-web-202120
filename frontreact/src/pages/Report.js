@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+ 
 export const Report = () => {
   const [products, setProducts] = useState([]);
+
 
   return (
     <section id='report'>

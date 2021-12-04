@@ -5,15 +5,16 @@ import React from 'react';
  * @param {*} props
  * @returns
  */
-export const Card = (props) => {
+export const Card = ({props}) => {
   const { name, picture, price, isActive } = props;
   return (
-    <div>
-      <div className='card-header'>
+    <div className="card" style={{ backgroundColor: isActive ? 'withe' : 'grey',  }}>
+      <div className='card-header' >
         <p className='card-title'>{name}</p>
         <span className='material-icons card-favorite'>favorite_border</span>
       </div>
       <img className='card-img' src={picture} alt={name} />
+      {console.log(name)}
       <div className='card-bottom'>
         <p className='price'>$ {price}</p>
       </div>

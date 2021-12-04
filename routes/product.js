@@ -5,9 +5,10 @@ const {getProducts} = require('../controllers/product');
 /* GET products listing. Please establish connection with getProduct function from controllers/product.js  */
 router.get('/', function (req, res, next) {
   var a = getProducts();
-  var serch = req.url.split("=")["1"];
   var r = [];
-  b = a.filter(function(x) {if (x['name'].includes('Oil')) return x});
+  const serch =  () =>{if(req.url.includes("=")){return req.url.split("=")["1"];} else return ""};
+  b = a.filter( function(x) {if (x['name'].toLowerCase().includes(serch())) { return x;}});
+  v = serch();
   res.send(
     b
   );
