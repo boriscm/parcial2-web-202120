@@ -27,10 +27,10 @@ function App() {
 
   var l;
   if(language === LOCALES.SPANISH){
-    l = spanish;
+    l = spanish[LOCALES.SPANISH];
   }
   else{
-    l = english;
+    l = english[LOCALES.ENGLISH];
   }
 
   console.log(l)
