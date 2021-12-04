@@ -3,13 +3,20 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { I18nSelect } from './I18nSelect';
 
-export const NavBar = ({ onSearchKeyChange, setLanguage }) => {
+export const NavBar = ({ onSearchKeyChange, setLanguageVal }) => {
   const [navState, setNavState] = useState({ showingSearch: false });
+  const [state, setState] = useState("");
+  console.log(typeof setLanguageVal);
+  console.log(typeof onSearchKeyChange);
+
+  
 
   const showSearchContainer = (event) => {
     event.preventDefault();
     setNavState({ showingSearch: !navState.showingSearch });
   };
+
+
 
   return (
     <header className='menu'>
@@ -29,7 +36,7 @@ export const NavBar = ({ onSearchKeyChange, setLanguage }) => {
               <span onClick={(e) => showSearchContainer(e)}>
                 <i className='material-icons search'>search</i>
               </span>
-              <I18nSelect></I18nSelect>
+              <I18nSelect setLanguage ={setLanguageVal}></I18nSelect>
             </div>
           </nav>
         </div>
@@ -41,12 +48,13 @@ export const NavBar = ({ onSearchKeyChange, setLanguage }) => {
       >
         <input
           type='text'
-          onChange={(e) => onSearchKeyChange(e.target.value)}
+          onChange={(e) => {onSearchKeyChange(e.target.value)}}
         />
         <span onClick={(e) => showSearchContainer(e)}>
           <i className='material-icons close'>close</i>
         </span>
       </div>
+
     </header>
   );
 };

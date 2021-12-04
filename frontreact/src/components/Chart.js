@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 export const Chart = ({ width = 600, height = 600, data }) => {
   const barChart = useRef();
-
+  
   useEffect(() => {
     const margin = { top: 10, left: 50, bottom: 40, right: 10 };
     const iwidth = width - margin.left - margin.right;

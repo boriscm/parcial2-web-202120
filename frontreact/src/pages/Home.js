@@ -2,17 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Card } from '../components/Card';
 
 
-export const Home = ({ searchKey }) => {
+export const Home = ({ searchKey}) => {
   const [products, setProducts] = useState([]);
-
+  var ruta = "http://localhost:3001/api/products";
+  console.log(searchKey);
+  if(searchKey === "")
+  {
+    ruta = "http://localhost:3001/api/products";
+  }
+  else{
+    ruta+="?q="+searchKey;
+  }
+  console.log(ruta);
   useEffect(() => {
-    fetch('http://localhost:3001/api/products')
+    fetch(ruta)
     .then((resp) => resp.json())
     .then((data)=> {
       console.log("dato", data);
       setProducts(data);
     });
-  },[]);
+  });
 
 
 
