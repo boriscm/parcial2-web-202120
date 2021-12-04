@@ -22,7 +22,7 @@ export const Home = ({ searchKey, lang}) => {
       console.log("dato", data);
       setProducts(data);
     });
-  },[]);
+  });
 
 
 
