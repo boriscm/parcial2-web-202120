@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Card } from '../components/Card';
 
 
-export const Home = ({ searchKey}) => {
+export const Home = ({ searchKey, lang}) => {
+  const { report, home, gallery } =lang;
   const [products, setProducts] = useState([]);
   var ruta = "http://localhost:3001/api/products";
   console.log(searchKey);
@@ -21,14 +22,14 @@ export const Home = ({ searchKey}) => {
       console.log("dato", data);
       setProducts(data);
     });
-  });
+  },[]);
 
 
 
   return (
     <section id='home'>
       <div className='home-container'>
-        <h1>Gallery</h1>
+        <h1>{gallery}</h1>
         <div className='home-card'>
 
             {products.map(item => <Card props = {item}/>)

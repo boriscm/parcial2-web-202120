@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { I18nSelect } from './I18nSelect';
 
-export const NavBar = ({ onSearchKeyChange, setLanguageVal }) => {
+export const NavBar = ({ onSearchKeyChange, setLanguageVal, actLanguage }) => {
+
+  console.log(actLanguage);
+  const { report, home, gallery } =actLanguage;
   const [navState, setNavState] = useState({ showingSearch: false });
   const [state, setState] = useState("");
-  console.log(typeof setLanguageVal);
-  console.log(typeof onSearchKeyChange);
+  console.log( report);
 
   
 
@@ -26,10 +28,10 @@ export const NavBar = ({ onSearchKeyChange, setLanguageVal }) => {
           <nav className='menu-items'>
             <div className='menu-links'>
               <Link className='nav-item' aria-current='page' to='/'>
-                Home
+                {home}
               </Link>
               <Link className='nav-item' aria-current='page' to='/report'>
-                Report
+                {report}
               </Link>
             </div>
             <div className='menu-actions'>

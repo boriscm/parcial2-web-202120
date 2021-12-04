@@ -8,6 +8,8 @@ import { IntlProvider } from 'react-intl';
 
 import { LOCALES } from './i18n/locales';
 import messages from './i18n/messages';
+import english from './i18n/messages/en-us'
+import spanish from './i18n/messages/es-co'
 
 function App() {
   const [searchState, setSearchState] = useState({ searchKey: '' });
@@ -23,18 +25,27 @@ function App() {
   }
   console.log(language)
 
+  var l;
+  if(language === LOCALES.SPANISH){
+    l = spanish;
+  }
+  else{
+    l = english;
+  }
+
+  console.log(l)
 
   return (
     <IntlProvider locale={language} messages={messages[language]}>
       <header>
-        <NavBar onSearchKeyChange={setSearchkey} setLanguageVal={languageSet} />
+        <NavBar onSearchKeyChange={setSearchkey} setLanguageVal={languageSet} actLanguage ={l}/>
       </header>
       <main>
         <Routes>
           <Route
             exact
             path='/'
-            element={<Home searchKey={searchState.searchKey}  />}
+            element={<Home searchKey={searchState.searchKey} lang={l}/>}
           />
           <Route exact path='/report' element={<Report />} />
         </Routes>
